@@ -1,4 +1,13 @@
 @import 'variables';
 @import '../../node_modules/bootstrap/scss/bootstrap';
-
+@import 'utilities';
 @import 'sidebar';
+
+@each $color, $value in $theme-colors {
+  @include text-emphasis-variant('.bg-#{$color}', bg-contrasting-color($value, $gray-900, $gray-200));
+
+  .bg-#{$color}.bg-lighter,
+  .bg-#{$color} .bg-lighter {
+    background-color: lighten($value, 10%) !important;
+  }
+}

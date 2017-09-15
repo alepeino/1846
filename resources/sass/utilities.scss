@@ -1,0 +1,7 @@
+@function bg-contrasting-color($bg-color, $if-light, $if-dark) {
+  @if (lightness($bg-color) > 50) {
+    @return $if-light;
+  } @else {
+    @return $if-dark;
+  }
+}
