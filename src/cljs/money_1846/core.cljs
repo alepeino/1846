@@ -16,7 +16,8 @@
   (reagent/render [views/main]
                   (.getElementById js/document "app")))
 
-(defn ^:export init []
-  (re-frame/dispatch-sync [:initialize-db])
-  (dev-setup)
-  (mount-root))
+(defonce _init
+  (do
+    (re-frame/dispatch-sync [:initialize-db])
+    (dev-setup)
+    (mount-root)))
