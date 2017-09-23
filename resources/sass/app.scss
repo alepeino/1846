@@ -1,5 +1,7 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
 @import 'variables';
-@import '../../node_modules/bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
 @import 'utilities';
 @import 'sidebar';
 

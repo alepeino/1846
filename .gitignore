@@ -1,11 +1,5 @@
 /*.log
 /target
-/*-init.clj
 /resources/public/js/out
 /resources/public/js/app.js
-/resources/public/css/app.css
-out
-/node_modules
-/package.json
-/package-lock.json
-/mix-manifest.json
+/resources/public/css/app.css*

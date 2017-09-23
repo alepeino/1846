@@ -20,14 +20,17 @@
 
   :profiles
   {:dev
-   {:dependencies [[binaryage/devtools "0.9.4"]
-                   [figwheel-sidecar "0.5.13"]]
-    :plugins      [[lein-figwheel "0.5.13"]
-                   [lein-npm "0.6.2"]]
-    :npm {:devDependencies [[laravel-mix "1.4.3"]
-                            [bootstrap "github:twbs/bootstrap#v4-dev"]]
-          :package {:scripts {:watch "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-                              :production "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"}}}}}
+   {:plugins      [[lein-figwheel "0.5.13"]
+                   [deraen/lein-sass4clj "0.3.1"]]
+    :dependencies [[binaryage/devtools "0.9.4"]
+                   [figwheel-sidecar "0.5.13"]
+                   [org.slf4j/slf4j-nop "1.7.13"]
+                   [org.webjars.bower/bootstrap "4.0.0-beta" :exclusions [org.webjars.bower/jquery
+                                                                          org.webjars.bower/popper.js]]]
+    :sass         {:source-paths ["resources/sass/"]
+                   :target-path "resources/public/css"
+                   :output-style :expanded
+                   :source-map true}}}
 
   :cljsbuild
   {:builds {:dev {:source-paths ["src/cljs"]
