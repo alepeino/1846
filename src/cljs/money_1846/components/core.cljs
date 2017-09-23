@@ -1,5 +1,11 @@
 (ns money-1846.components.core
-  (:require [reagent.core :as r]))
+  (:require
+    [money-1846.components.game-components]
+    [money-1846.components.stock-price-chart]
+    [reagent.core :as r]))
+
+(def add-remove-corporations money-1846.components.game-components/add-remove-corporations)
+(def stock-price-chart money-1846.components.stock-price-chart/stock-price-chart)
 
 (defn sidebar [content]
   (let [open (r/atom false)]
