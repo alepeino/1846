@@ -1,0 +1,21 @@
+//@import 'cljsjs/dragula/common/dragula';
+
+//https://github.com/bevacqua/dragula/issues/303
+//.gu-draggable {
+//   -webkit-transform: translateZ(0);
+//   -moz-transform: translateZ(0);
+//   -ms-transform: translateZ(0);
+//   -o-transform: translateZ(0);
+//   transform: translateZ(0);
+//   -webkit-backface-visibility: hidden;
+//   -webkit-perspective: 1000;
+// }
+
+//https://github.com/bevacqua/dragula/issues/373
+//.gu-hide {
+//  visibility: hidden;
+//}
+
+.gu-transit {
+  opacity: 0.3;
+}
