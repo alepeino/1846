@@ -8,11 +8,11 @@
    db/default-db))
 
 (re-frame/reg-event-db
-  :add-corporation
+  :corporations/add
   (fn [db [_ id]]
     (assoc-in db [:corporations id :in-game] true)))
 
 (re-frame/reg-event-db
-  :remove-corporation
+  :corporations/remove
   (fn [db [_ id]]
     (assoc-in db [:corporations id :in-game] false)))

@@ -12,5 +12,5 @@
          [:input {:type :checkbox
                   :checked (boolean in-game)
                   :on-change #(if in-game
-                                (rf/dispatch-sync [:remove-corporation id])
-                                (rf/dispatch-sync [:add-corporation id]))}]]])]))
+                                (rf/dispatch-sync [:corporations/remove id])
+                                (rf/dispatch-sync [:corporations/add id]))}]]])]))
