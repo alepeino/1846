@@ -7,6 +7,10 @@
 @import 'utilities';
 @import 'sidebar';
 
+.highlight .highlight-big {
+  font-size: 125%;
+}
+
 @each $color, $value in $theme-colors {
   @include text-emphasis-variant('.bg-#{$color}', bg-contrasting-color($value, $gray-900, $gray-200));
 
@@ -33,4 +37,8 @@
 
 .menu-section {
   @include box-shadow(inset 0 1px 1px rgba($black, .075));
+}
+
+.gu-transit > img {
+  margin: 0 !important;
 }

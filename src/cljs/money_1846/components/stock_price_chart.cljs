@@ -7,15 +7,16 @@
 (def dragula (.-dragula js/window))
 
 (defn corporation-stock-token [props id]
-  [:div
+  [:div {:data-corporation-id id}
    [:img.rounded-circle.w-100.border.border-primary
     (r/merge-props props {:src (str "img/" (name id) ".svg")})]])
 
 (defn stock-price-chart-segment [props value corporations]
   [:div.text-center.small.bg-warning.border
    (r/merge-props props {:class (if (<= 40 value 150) "font-weight-bold" "bg-lighter")
-                         :style {:padding "0 0.1rem"}})
-   value
+                         :style {:padding "0 0.1rem"}
+                         :data-stock-value value})
+   [:span.highlight-big value]
    (for [{id :id} corporations]
      ^{:key id}
      [corporation-stock-token
@@ -23,10 +24,19 @@
       id])])
 
 (defn stock-price-chart [corporations chart-values]
-  (let [prices (group-by #(or (:stock-price %) 0) (vals corporations))
+  (let [drake (atom nil)
+        prices (group-by #(or (:stock-price %) 0) (vals corporations))
         segment-width (/ 100 (count chart-values))
         dragula-options #js{}
-        ref #(when % (-> % (.-children) (js/Array.from) (dragula dragula-options)))]
+        dragula-events #(doto % ((partial reset! drake))
+                                (.on "over" (fn [_ segment _] (-> segment (.-classList) (.add "highlight"))))
+                                (.on "out" (fn [_ segment _] (-> segment (.-classList) (.remove "highlight"))))
+                                (.on "drop" (fn [token segment _ _]
+                                              (.cancel @drake true)
+                                              (rf/dispatch [:corporations/set-price
+                                                            (-> token .-dataset .-corporationId keyword)
+                                                            (-> segment .-dataset .-stockValue js/parseInt)]))))
+        ref #(when % (-> % (.-children) (js/Array.from) (dragula dragula-options) dragula-events))]
     [:div.d-flex {:ref ref
                   :style {:height (str (* 5 segment-width) "vw")}}
      (for [value chart-values]
