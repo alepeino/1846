@@ -9,5 +9,6 @@
 
 (re-frame/reg-sub
   :in-game-corporations
-  (fn [db]
-    (filter (comp :in-game second) (:corporations db))))
+  :<- [:corporations]
+  (fn [corporations]
+    (filter (comp :in-game second) corporations)))
