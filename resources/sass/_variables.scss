@@ -1,6 +1,8 @@
+$enable-shadows: true;
+
 $sidebar-width: 3rem;
 
-$theme-colors: map_merge($theme-colors, (
+$corporations: (
   baor: #004788,
   ilcr: #2e6235,
   nycr: #131212,
@@ -8,7 +10,9 @@ $theme-colors: map_merge($theme-colors, (
   erie: #ffe113,
   gtrw: #e36e27,
   penn: #b42127
-));
+);
 
-$corporation-text-color-light: #e9ecef;
-$corporation-text-color-dark: #212529;
+$theme-colors: map_merge($theme-colors, $corporations);
+
+$corporation-text-color-light: $gray-200;
+$corporation-text-color-dark: $gray-900;

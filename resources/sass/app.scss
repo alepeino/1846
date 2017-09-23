@@ -14,4 +14,23 @@
   .bg-#{$color} .bg-lighter {
     background-color: lighten($value, 10%) !important;
   }
+
+  .bg-#{$color}.highlight,
+  .bg-#{$color} .highlight {
+    background-color: lighten($value, 20%) !important;
+  }
+}
+
+@each $corporation, $_ in $corporations {
+  div.icon-#{$corporation} {
+    background-image: url('../img/' + $corporation + '.svg');
+  }
+
+  img.icon-#{$corporation} {
+    content: url('../img/' + $corporation + '.svg');
+  }
+}
+
+.menu-section {
+  @include box-shadow(inset 0 1px 1px rgba($black, .075));
 }
