@@ -28,15 +28,14 @@
         prices (group-by #(or (:stock-price %) 0) (vals corporations))
         segment-width (/ 100 (count chart-values))
         dragula-options #js{}
-        dragula-events #(doto % ((partial reset! drake))
-                                (.on "over" (fn [_ segment _] (-> segment (.-classList) (.add "highlight"))))
+        dragula-events #(doto % (.on "over" (fn [_ segment _] (-> segment (.-classList) (.add "highlight"))))
                                 (.on "out" (fn [_ segment _] (-> segment (.-classList) (.remove "highlight"))))
                                 (.on "drop" (fn [token segment _ _]
                                               (.cancel @drake true)
                                               (rf/dispatch [:corporations/set-price
                                                             (-> token .-dataset .-corporationId keyword)
                                                             (-> segment .-dataset .-stockValue js/parseInt)]))))
-        ref #(when % (-> % (.-children) (js/Array.from) (dragula dragula-options) dragula-events))]
+        ref #(when % (-> % (.-children) (js/Array.from) (dragula dragula-options) ((partial reset! drake)) (dragula-events)))]
     [:div.d-flex {:ref ref
                   :style {:height (str (* 5 segment-width) "vw")}}
      (for [value chart-values]
