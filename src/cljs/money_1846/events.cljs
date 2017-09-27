@@ -20,4 +20,6 @@
 (re-frame/reg-event-db
   :corporations/set-price
   (fn [db [_ id price]]
-    (assoc-in db [:corporations id :stock-price] price)))
+    (-> db
+      (assoc-in [:corporations id :stock-price] price)
+      (assoc-in [:corporations id :price-last-updated] (js/Date.now)))))

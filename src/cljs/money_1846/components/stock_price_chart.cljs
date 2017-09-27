@@ -17,7 +17,7 @@
                          :style {:padding "0 0.1rem"}
                          :data-stock-value value})
    [:span.highlight-big value]
-   (for [{id :id} corporations]
+   (for [{id :id} (sort-by :price-last-updated corporations)]
      ^{:key id}
      [corporation-stock-token
       {:style {:margin-bottom (-> 3.2 (- (* 0.6 (count corporations))) (str "vw"))}}
@@ -27,7 +27,8 @@
   (let [drake (atom nil)
         prices (group-by #(or (:stock-price %) 0) (vals corporations))
         segment-width (/ 100 (count chart-values))
-        dragula-options #js{:moves #(-> % .-dataset .-corporationId)}
+        dragula-options #js{:moves #(-> % .-dataset .-corporationId)
+                            :revertOnSpill true}
         dragula-events #(doto % (.on "over" (fn [_ segment _] (-> segment (.-classList) (.add "highlight"))))
                                 (.on "out" (fn [_ segment _] (-> segment (.-classList) (.remove "highlight"))))
                                 (.on "drop" (fn [token segment _ _]
