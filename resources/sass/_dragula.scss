@@ -12,10 +12,22 @@
 // }
 
 //https://github.com/bevacqua/dragula/issues/373
-//.gu-hide {
-//  visibility: hidden;
-//}
+.gu-hide {
+  visibility: hidden;
+}
 
 .gu-transit {
   opacity: 0.3;
+}
+
+.gu-mirror {
+  display: none;
+}
+
+.gu-mirror:last-of-type {
+  display: block;
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: 0.8;
 }
