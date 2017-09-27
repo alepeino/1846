@@ -5,7 +5,12 @@
 
 @import 'dragula';
 @import 'utilities';
+@import 'cursor';
 @import 'sidebar';
+
+body {
+  user-select: none;
+}
 
 .highlight .highlight-big {
   font-size: 125%;

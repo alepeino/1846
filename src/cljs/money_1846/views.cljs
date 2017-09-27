@@ -10,13 +10,13 @@
    [:div.menu-section.bg-lighter.rounded.m-4.p-1
     [:ul.list-unstyled.text-center
      [:li
-      [components/collapsible-panel {:class "nav-link text-center text-light h5"}
-       "Add Corporation"
+      [components/collapsible-panel
+       [:a.nav-link.text-center.text-light.h5 "Add Corporation"]
        [components/add-remove-corporations]]]
-     [:li.px-4 [:hr.m-1]]
+     [:li.px-4>hr.m-1]
      [:li
-      [components/collapsible-panel {:class "nav-link text-center text-light"}
-       "Add Player"
+      [components/collapsible-panel
+       [:a.nav-link.text-center.text-light "Add Player"]
        [:div ""]]]]]])
 
 (defn game-panel [in-game-corporations]
