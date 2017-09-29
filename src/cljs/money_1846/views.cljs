@@ -20,13 +20,16 @@
        [:div ""]]]]]])
 
 (defn game-panel [in-game-corporations]
-  [:div
-   [components/stock-price-chart in-game-corporations db/stock-chart-values]])
+  (let [in-game-corporations (rf/subscribe [:in-game-corporations])]
+    [:div.d-flex.flex-column {:style {:height "100vh"}}
+     [components/stock-price-chart @in-game-corporations db/stock-chart-values]
+     [:div.d-flex {:style {:flex 1}}
+      [:div.w-50.border.bg-info.h-100]
+      [:div.w-50.border.bg-danger.h-100]]
+     [:div.bg-secondary.bg-lighter
+      (pr-str @in-game-corporations)]]))
 
 (defn main []
-  (let [in-game-corporations (rf/subscribe [:in-game-corporations])]
-    [:div
-     [components/sidebar sidebar-menu]
-     [:div
-      [game-panel @in-game-corporations]
-      [:div (pr-str @in-game-corporations)]]]))
+  [:div
+   [components/sidebar sidebar-menu]
+   [game-panel]])
