@@ -5,8 +5,10 @@
 
 @import 'dragula';
 @import 'utilities';
+@import 'position';
 @import 'cursor';
 @import 'sidebar';
+@import 'corporations-panel';
 
 body {
   user-select: none;
@@ -21,7 +23,7 @@ body {
 
   .bg-#{$color}.bg-lighter,
   .bg-#{$color} .bg-lighter {
-    background-color: lighten($value, 10%) !important;
+    background-color: lighten($value, 12%) !important;
   }
 
   .bg-#{$color}.highlight,
@@ -33,6 +35,17 @@ body {
 @each $corporation, $_ in $corporations {
   div.icon-#{$corporation} {
     background-image: url('../img/' + $corporation + '.svg');
+    background-repeat: no-repeat;
+
+    &.card-header {
+      background-position: 0.4rem 40%;
+      background-size: 2rem;
+    }
+
+    .share & {
+      background-position: 50%;
+      background-size: 5rem;
+    }
   }
 
   img.icon-#{$corporation} {

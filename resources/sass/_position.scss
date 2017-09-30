@@ -1,0 +1,5 @@
+@each $position in ('relative', 'absolute', 'static', 'fixed', 'sticky') {
+  .position-#{$position} {
+    position: #{$position} !important;
+  }
+}

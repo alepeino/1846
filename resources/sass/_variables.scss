@@ -1,5 +1,12 @@
 $enable-shadows: true;
 
+$sizes: map_merge($sizes, (
+  10: 10%,
+  40: 40%,
+  50: 50%,
+  60: 60%,
+));
+
 $sidebar-width: 3rem;
 
 $corporations: (

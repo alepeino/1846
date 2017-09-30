@@ -1,0 +1,21 @@
+.corporation-portfolio {
+  position: relative;
+  height: 6rem !important;
+}
+
+.share {
+  position: absolute;
+  border-left: 0;
+  border-bottom: 0;
+
+  *:last-child {
+    opacity: 0.4;
+  }
+
+  @for $stacked from 0 through 10 {
+    &.stack-#{$stacked} {
+      top: (2 * $stacked) + px;
+      right: (2 * $stacked) + px;
+    }
+  }
+}
