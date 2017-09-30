@@ -8,7 +8,7 @@
 
 (defn sidebar-menu []
   [:nav
-   [:div.menu-section.bg-lighter.rounded.m-4.p-1
+   [:div.shadow.bg-lighter.rounded.m-4.p-1
     [:ul.list-unstyled.text-center
      [:li
       [components/collapsible-panel
