@@ -6,10 +6,10 @@
   (let [[{:keys [corporation-id] :as props} _] (props-children)]
     [:div.h-100.card.rounded.d-flex.flex-row.share
      (dissoc props :corporation-id)
-     [:div.rounded-left.w-10 {:class (str "bg-" (name corporation-id))}]
+     [:div.rounded-left {:class (str "bg-" (name corporation-id))}]
      [:div.rounded-right {:class (str "icon-" (name corporation-id))
                           :style {:flex 1}}
-      [:h4.text-right.text-dark.p-1.cursor-default "10%"]]]))
+      [:h5.text-right.text-secondary.p-1.cursor-default "10%"]]]))
 
 (defn corporation-card [{:keys [id] :as corporation}]
   [:div.card.rounded.mb-4 {:class (str "bg-" (name id))}

@@ -8,7 +8,11 @@
   border-left: 0;
   border-bottom: 0;
 
-  *:last-child {
+  & > *:first-child {
+    width: 16%;
+  }
+
+  & > *:last-child {
     opacity: 0.4;
   }
 
