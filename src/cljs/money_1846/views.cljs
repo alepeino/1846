@@ -15,7 +15,7 @@
       [:div.w-40.border.bg-danger.h-100]
       [corporations-panel @in-game-corporations]]
      [:div.bg-secondary.bg-lighter
-      "status"]]))
+      [:div (pr-str @(rf/subscribe [:players]))]]]))
 
 (defn main []
   [:div
