@@ -47,7 +47,7 @@
                                                               (-> segment .-dataset .-stockValue js/parseInt)])))))
         ref #(when % (-> % (.-children) (js/Array.from) (dragula dragula-options) ((partial reset! drake)) (dragula-events)))]
     [:div.d-flex.w-100 {:ref ref
-                        :style {:height (str (* 4 segment-width) "vw")}}
+                        :style {:height (str (* 5.2 segment-width) "vw")}}
      (for [value chart-values]
        ^{:key value}
        [stock-price-chart-segment
