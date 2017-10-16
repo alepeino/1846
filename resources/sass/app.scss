@@ -6,8 +6,8 @@
 @import 'dragula';
 @import 'utilities';
 @import 'position';
+@import 'flex';
 @import 'cursor';
-@import 'sidebar';
 @import 'corporations-panel';
 
 body {
@@ -59,4 +59,8 @@ body {
 
 .gu-transit > img {
   margin: 0 !important;
+}
+
+.navbar-toggler-icon {
+  background-image: $navbar-light-toggler-icon-bg;
 }

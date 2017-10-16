@@ -21,7 +21,8 @@
                      attrs)))
 
 (def default-db
-  {:players {}
+  {:sidebar-open false
+   :players {}
    :corporations {:baor (make-Corporation :baor {:name "Baltimore and Ohio Railroad"})
                   :ilcr (make-Corporation :ilcr {:name "Illinois Central Railroad"})
                   :nycr (make-Corporation :nycr {:name "New York Central Railroad"})

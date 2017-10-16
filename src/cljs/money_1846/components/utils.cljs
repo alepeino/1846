@@ -10,23 +10,10 @@
                  on-clickaway #(when (and @root (not (.contains @root (.-target %))))
                                  ((:on-clickaway props)))
                  _ (js/document.addEventListener "mousedown" on-clickaway)]
-                (into [:div (merge (dissoc props :on-clickaway)
-                                   {:ref (partial reset! root)})]
-                      children)
-                (finally (js/document.removeEventListener "mousedown" on-clickaway)))))
-
-(defn sidebar [content]
-  (let [open (r/atom false)]
-    (fn []
-      [clickaway {:id "sidebar"
-                  :on-clickaway #(reset! open false)}
-       [:nav.p-1.bg-danger
-        [:button.navbar-toggler.align-self-start
-         {:type "button"
-          :on-click #(swap! open not)}
-         [:span.navbar-toggler-icon.small]]]
-       [:div.sidebar-content.w-25.bg-info {:class (when @open "open")}
-        [content]]])))
+      (into [:div (merge (dissoc props :on-clickaway)
+                         {:ref (partial reset! root)})]
+            children)
+      (finally (js/document.removeEventListener "mousedown" on-clickaway)))))
 
 (defn collapsible-panel [title content]
   (let [default {:open false}
@@ -40,7 +27,5 @@
                       :overflow "hidden"
                       :max-height (if (:open @s) (:client-height @s) 0)}}
         [:div
-         {:ref #(when % (->> % (.-clientHeight) (swap! s assoc :client-height)))
-          :style {:display "inline-block"
-                  :width "100%"}}
+         {:ref #(when % (->> % (.-clientHeight) (swap! s assoc :client-height)))}
          content]]])))

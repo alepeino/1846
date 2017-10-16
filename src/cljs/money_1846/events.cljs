@@ -9,6 +9,16 @@
    db/default-db))
 
 (rf/reg-event-db
+  :sidebar/close
+  (fn [db _]
+    (assoc db :sidebar-open false)))
+
+(rf/reg-event-db
+  :sidebar/toggle
+  (fn [db _]
+    (update db :sidebar-open not)))
+
+(rf/reg-event-db
   :corporations/add
   (fn [db [_ id]]
     (assoc-in db [:corporations id :in-game] true)))

@@ -2,6 +2,8 @@
   (:require-macros [reagent.ratom :refer [reaction]])
   (:require [re-frame.core :as rf]))
 
+(rf/reg-sub :sidebar-open :sidebar-open)
+
 (rf/reg-sub :players :players)
 
 (rf/reg-sub :corporations :corporations)
