@@ -13,7 +13,7 @@
 (defn portfolio [pf]
   (into [:div.portfolio]
     (for [[id amount] pf]
-      (into [:div.share-stack]
+      (into [:div.mb-2.share-stack {:title (str amount " shares")}]
         (for [n (range amount)]
           [share {:corporation-id id
                   :class (str "stack-" n)}])))))

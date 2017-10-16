@@ -4,9 +4,11 @@
 
 (defn corporation-card [{:keys [id] :as corporation}]
   [:div.card.rounded.mb-4 {:class (str "bg-" (name id))}
-   [:div.card-header.h6.text-center.px-5
-    {:class (str "icon-" (name id))}
-    (:name corporation)]
+   [:div.card-header.h6.text-center
+    {:class (str "icon-" (name id))
+     :title (:name corporation)}
+    [:span.d-none.d-xl-block.px-4 (:name corporation)]
+    [:span.d-block.d-xl-none (:short-name corporation)]]
    [:div.card-body.p-2.bg-lighter.d-flex
     [:div.w-60
      [portfolio (:portfolio corporation)]]
