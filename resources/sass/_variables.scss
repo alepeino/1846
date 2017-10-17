@@ -19,7 +19,15 @@ $corporations: (
   penn: #b42127
 );
 
-$theme-colors: map_merge($theme-colors, $corporations);
+$players: (
+  player1: $purple,
+  player2: $teal,
+  player3: $pink,
+  player4: $gray-600,
+  player5: $orange
+);
+
+$theme-colors: map_merge($theme-colors, map_merge($corporations, $players));
 
 $corporation-text-color-light: $gray-200;
 $corporation-text-color-dark: $gray-900;

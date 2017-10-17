@@ -1,5 +1,7 @@
 (ns money-1846.db)
 
+(def bank-sizes {3 6500 4 7500 5 9000})
+
 (def stock-chart-values [0 10 20 30
                          40 50 60 70 80 90
                          100 112 124 137 150
@@ -22,7 +24,10 @@
 
 (def default-db
   {:sidebar-open false
-   :players {}
+   :bank (get bank-sizes 3 0)
+   :players {:player1 (map->Player {:id :player1 :name "Player 1" :cash 0})
+             :player2 (map->Player {:id :player2 :name "Player 2" :cash 0})
+             :player3 (map->Player {:id :player3 :name "Player 3" :cash 0})}
    :corporations {:baor (make-Corporation :baor {:name "Baltimore and Ohio Railroad" :short-name "Baltimore"})
                   :ilcr (make-Corporation :ilcr {:name "Illinois Central Railroad" :short-name "Illinois"})
                   :nycr (make-Corporation :nycr {:name "New York Central Railroad" :short-name "New York"})

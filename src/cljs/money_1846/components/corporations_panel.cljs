@@ -1,6 +1,6 @@
 (ns money-1846.components.corporations-panel
   (:require
-    [money-1846.components.portfolio :refer [portfolio]]))
+    [money-1846.components.portfolio :refer [portfolio cash]]))
 
 (defn corporation-card [{:keys [id] :as corporation}]
   [:div.card.rounded.mb-4 {:class (str "bg-" (name id))}
@@ -12,8 +12,8 @@
    [:div.card-body.p-2.bg-lighter.d-flex
     [:div.w-60
      [portfolio (:portfolio corporation)]]
-    [:div.w-40.rounded.ml-1.shadow.d-flex.justify-content-center.align-items-center
-     [:div (str "$ " (:cash corporation))]]]])
+    [:div.w-40.ml-1.h6.m-0
+     [cash (:cash corporation)]]]])
 
 (defn corporations-panel [corporations]
   [:div.card-columns
